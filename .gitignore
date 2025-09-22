@@ -17,3 +17,6 @@ node_modules
 
 # add the README.md file
 README.md
+
+# Add the .vscode folder
+.vscode/
