@@ -57,6 +57,36 @@ Util.buildClassificationGrid = async function(data){
   return grid
 }
 
+/* **************************************
+* Build the vehicle detail view HTML
+* ************************************ */
+Util.buildVehicleDetailGrid = async function(data) {
+  // Format price and mileage with commas and currency symbol
+  const formattedPrice = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  }).format(data.inv_price);
+
+  const formattedMileage = new Intl.NumberFormat('en-US').format(data.inv_miles);
+
+  let grid = `
+    <div class="vehicle-detail-container">
+      <div class="vehicle-detail-image">
+        <img src="${data.inv_image}" alt="Image of ${data.inv_make} ${data.inv_model}">
+      </div>
+      <div class="vehicle-detail-data">
+        <h2>${data.inv_make} ${data.inv_model} Details</h2>
+        <p class="price"><strong>Price:</strong> ${formattedPrice}</p>
+        <p><strong>Description:</strong> ${data.inv_description}</p>
+        <p><strong>Color:</strong> ${data.inv_color}</p>
+        <p><strong>Year:</strong> ${data.inv_year}</p>
+        <p><strong>Mileage:</strong> ${formattedMileage}</p>
+      </div>
+    </div>
+  `
+  return grid
+}
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 
