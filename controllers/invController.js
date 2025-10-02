@@ -41,7 +41,7 @@ invCont.buildByInventoryId = async function (req, res, next) {
     res.render("./inventory/detail", {
       title: vehicleName,
       nav,
-      grid, // Use "grid" to pass the HTML to the view
+      grid, 
       description: `This is the ${vehicleName} page.`,
     });
   };
