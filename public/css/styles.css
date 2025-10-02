@@ -340,3 +340,151 @@ section {
     width: 45%;
   }
 }
+
+/* --- Inventory Classification Display --- */
+#inv-display {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 312px));
+  gap: 20px;
+  list-style: none;
+}
+
+#inv-display li {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+#inv-display li:hover {
+  transform: translateY(-5px);
+}
+
+#inv-display li a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+#inv-display li img {
+  width: 70%;
+  height: 113px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+
+.namePrice {
+  padding: 15px;
+  text-align: left;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.namePrice h2 {
+  font-size: 1.2em;
+  margin-top: 0;
+  margin-bottom: 3px;
+  color: #333;
+}
+
+.namePrice span {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #0055B8;
+  text-align: right;
+  margin-top: auto;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  #inv-display {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+  }
+
+  #inv-display li img {
+    height: 150px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  #inv-display {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    text-align: center;
+    width: 80vw;
+    margin: 0 auto;
+  }
+
+  #inv-display li img {
+    height: 113px;
+    width: 210px;
+  }
+
+  .namePrice {
+    padding: 10px;
+  }
+
+  .namePrice h2 {
+    font-size: 1.1em;
+  }
+
+  .namePrice span {
+    font-size: 1em;
+  }
+}
+
+/* --- Styles for the vehicle detail view --- */
+.vehicle-detail-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.vehicle-detail-image {
+  flex: 1 1 auto;
+  max-width: 100%;
+}
+
+.vehicle-detail-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.vehicle-detail-data {
+  flex: 1 1 400px;
+  line-height: 1.6;
+}
+
+.vehicle-detail-data h2 {
+  font-size: 1.8rem;
+  color: #0055B8;
+}
+
+.vehicle-detail-data .price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000;
+}
+
+/* Media Query for small screens */
+@media (max-width: 768px) {
+  .vehicle-detail-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+}
