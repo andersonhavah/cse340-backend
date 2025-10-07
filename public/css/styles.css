@@ -15,6 +15,7 @@
   --body-font: Inter;
   --heading-font: Literata;
   --main-accent: #01b0d3;
+  --second-accent: #00499E;
 }
 
 /* General Styles */
@@ -56,7 +57,7 @@ body {
   }
 
   #wrapper {
-    border: 5px solid var(--main-accent);
+    border: 5px solid var(--second-accent);
     border-radius: 10px;
     margin-top: 1rem;
     padding: 1vw;
@@ -205,13 +206,13 @@ hr {
 
 #hero li {
   list-style: none;
-  color: var(--main-accent);
+  color: var(--second-accent);
 }
 
 #hero li h2 {
   margin-top: 0;
   margin-bottom: 0;
-  color: var(--main-accent);
+  color: var(--second-accent);
 }
 
 #hero ul {
@@ -232,14 +233,14 @@ hr {
   max-width: 25vw;
   max-height: 10vh;
   padding: 0.5rem;
-  background-color: var(--main-accent);
-  color: var(--primary-text);
+  background-color: var(--second-accent);
+  color: var(--primary-background);
   font-weight: 800;
   border-radius: 0.25rem;
 }
 
 #actionbtn:hover {
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 /* For Delorian list */
@@ -265,7 +266,7 @@ section ul {
 }
 
 .add-col {
-  background-color: var(--main-accent);
+  background-color: var(--second-accent);
   height: 5.5em;
   width: 95%;
   border: var(--primary-text) solid 1px;
@@ -304,8 +305,8 @@ section {
     width: 90%;
     margin-top: 1.5em;
     padding: 1rem;
-    background-color: var(--main-accent);
-    color: var(--primary-text);
+    background-color: var(--second-accent);
+    color: var(--primary-background);
     font-weight: 800;
     font-size: large;
   }
@@ -487,4 +488,14 @@ section {
     align-items: center;
     gap: 0;
   }
+}
+
+#messages .notice {
+  color: #0055B8;
+  font-size: 1.1rem;
+}
+
+#messages .error {
+  color: #B30000;
+  font-size: 1.1rem;
 }
