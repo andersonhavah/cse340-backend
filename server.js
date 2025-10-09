@@ -17,6 +17,7 @@ const intentionalErrorRoute = require("./routes/intentionalErrorRoute");
 const catchIntentionalError = require("./middleware/catchIntentionalError");
 const session = require("express-session");
 const pool = require("./database/");
+const accountRoute = require("./routes/accountRoute");
 
 /* ***********************
  * Middleware
@@ -64,6 +65,9 @@ app.use("/inv", inventoryRoute)
 
 // Intentional error route (for testing 500 handling)
 app.use("/error", intentionalErrorRoute);
+
+// Account routes
+app.use("/account", accountRoute);
 
 // Middleware to catch intentional errors from /error routes and render the error view
 app.use(catchIntentionalError);
