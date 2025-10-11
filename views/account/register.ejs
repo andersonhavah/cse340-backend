@@ -8,11 +8,18 @@
   </div>
 
   <!-- This block will display any flash messages sent from the server -->
-  <% if (errors) { %>
-  <div class="flash-message">
-    <p><%= errors.message %></p>
-  </div>
-  <% } %>
+  <%- messages() %>
+
+<% if (errors) { %>
+    <ul class="flash-message notice">
+        <% errors.array().forEach(error=> { %>
+            <li>
+                <%= error.msg %>
+            </li>
+            <% }) %>
+    </ul>
+    <% } %>
+
 
   <!-- Registration Form -->
   <form id="registerForm" action="/account/register" method="post">
@@ -23,7 +30,8 @@
         id="account_firstname"
         name="account_firstname"
         class="input-field"
-        required >
+        required 
+        value="<%= locals.account_firstname %>" >
     </div>
 
     <div class="input-group">
@@ -34,7 +42,7 @@
         name="account_lastname"
         class="input-field"
         required
-      >
+        value="<%= locals.account_lastname %>" >
     </div>
 
     <div class="input-group">
@@ -45,7 +53,7 @@
         name="account_email"
         class="input-field"
         required
-      >
+        value="<%= locals.account_email %>" >
     </div>
 
     <div class="input-group">
