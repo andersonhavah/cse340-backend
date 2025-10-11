@@ -716,7 +716,7 @@ input:required:invalid:focus {
 
 /* --- NEW STYLES FOR MESSAGES --- */
 /* Container for all messages */
-#messages {
+#messages, .flash-message.notice {
   padding: 0;
   margin: 0;
   list-style-type: none;
@@ -726,7 +726,7 @@ input:required:invalid:focus {
 }
 
 /* Base style for any message */
-#messages li {
+#messages li, .flash-message.notice {
   padding: 1rem 1.5rem;
   font-size: 0.95rem;
   font-weight: 500;
@@ -741,7 +741,7 @@ input:required:invalid:focus {
 }
 
 /* Style for "error" messages (for future use) */
-#messages .error {
+#messages .error, .flash-message.error, .flash-message.notice {
   background-color: #FEF1F1;
   color: #991b1b;
   border-left: 5px solid #ef4444;
