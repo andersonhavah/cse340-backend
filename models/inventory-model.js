@@ -54,6 +54,20 @@ async function addClassification(classification_name) {
     }
 }
 
+/* ****************************************
+ * Check for existing classfication in the database
+ * Task 3
+ * *************************************** */
+async function checkExistingClassification(classification_name){
+  try {
+    const sql = "SELECT * FROM classification WHERE classification_name = $1"
+    const classification = await pool.query(sql, [classification_name])
+    return classification.rowCount
+  } catch (error) {
+    return error.message
+  }
+}
+
 
 /* ****************************************
  * Add a new inventory item to the database
@@ -102,4 +116,4 @@ async function addInventory(
     }
 }
 
-module.exports = { getClassifications, getInventoryByClassificationId, getVehicleByInventoryId, addClassification, addInventory };
+module.exports = { getClassifications, getInventoryByClassificationId, getVehicleByInventoryId, addClassification, addInventory, checkExistingClassification };
