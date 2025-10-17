@@ -1,12 +1,27 @@
-<%# The title for this view is "Vehicle Management" %>
-    <h1>Vehicle Management</h1>
+<%# views/inventory/management.ejs %>
 
-    <%# Display flash messages if any exist %>
-        <%- messages() %>
+<h1>Vehicle Management</h1>
+<%- messages() %>
 
-            <div class="management-links">
-                <ul>
-                    <li><a href="/inv/add-classification">Add New Classification</a></li>
-                    <li><a href="/inv/add-inventory">Add New Vehicle</a></li>
-                </ul>
-            </div>
+<div class="management-links">
+  <ul>
+    <li><a href="/inv/add-classification">Add New Classification</a></li>
+    <li><a href="/inv/add-inventory">Add New Vehicle</a></li>
+  </ul>
+</div>
+
+<hr />
+
+<%# New section for managing inventory items %>
+<h2>Manage Inventory</h2>
+<p>Choose a classification from the list to see the items.</p>
+
+<%- classificationSelect %> <%# An empty table that will be filled by JavaScript
+%>
+<table id="inventoryDisplay"></table>
+
+<%# This message will display if JavaScript is disabled %>
+<noscript>JavaScript must be enabled to use this page.</noscript>
+
+<%# Link to the new JavaScript file at the bottom of the view %>
+<script src="/js/inventory.js"></script>
