@@ -155,4 +155,32 @@ async function updateInventory(
   }
 }
 
-module.exports = { getClassifications, getInventoryByClassificationId, getVehicleByInventoryId, addClassification, addInventory, checkExistingClassification, updateInventory, };
+/* ***************************
+ * Get inventory row by inv_id
+ * ************************** */
+// async function getInventoryByInventoryId(inv_id) {
+//   try {
+//     const data = await pool.query(
+//       `SELECT * FROM public.inventory WHERE inv_id = $1`,
+//       [inv_id]
+//     )
+//     return data.rows[0]
+//   } catch (error) {
+//     console.error("get inventory item by id error " + error)
+//   }
+// }
+
+// Write a function to get inventory by inv_id
+async function getInventoryByInventoryId(inv_id) {
+  try {
+    const data = await pool.query(
+      `SELECT * FROM public.inventory WHERE inv_id = $1`,
+      [inv_id]
+    );
+    return data.rows;
+  } catch (error) {
+    console.error("getInventoryByInventoryId error " + error);
+  }
+}
+
+module.exports = { getClassifications, getInventoryByClassificationId, getVehicleByInventoryId, addClassification, addInventory, checkExistingClassification, updateInventory, getInventoryByInventoryId };
