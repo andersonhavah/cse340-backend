@@ -51,11 +51,13 @@ invCont.buildByInventoryId = async function (req, res, next) {
  * Task 1
  * ************************** */
 invCont.buildManagementView = async function (req, res, next) {
-    let nav = await utilities.getNav();
+  let nav = await utilities.getNav();
+  const classificationSelect = await utilities.buildClassificationList();
     res.render("./inventory/management", {
         title: "Vehicle Management",
         nav,
         description: "This is the vehicle management page.",
+        classificationSelect,
         errors: null,
     });
 };
@@ -190,6 +192,51 @@ invCont.addInventory = async function (req, res) {
             inv_color,
         });
     }
+};
+
+/* ***************************
+ * Return Inventory by Classification As JSON
+ * ************************** */
+invCont.getInventoryJSON = async (req, res, next) => {
+    const classification_id = parseInt(req.params.classification_id)
+    const invData = await invModel.getInventoryByClassificationId(classification_id)
+    if (invData.length > 0) { // Check if the array is not empty
+        return res.json(invData)
+    } else {
+        // To prevent an error on the client-side, you might send an empty array
+        // or handle it as an error as the original instructions suggest.
+        // Sending an empty array is often safer for the client-side script.
+        return res.json([]); 
+        // Or, to follow original instruction: next(new Error("No data returned"))
+    }
+}
+
+/* ***************************
+ * Build edit inventory view
+ * ************************** */
+invCont.editInventoryView = async function (req, res, next) {
+  const inv_id = parseInt(req.params.inv_id);
+  let nav = await utilities.getNav();
+  const itemData = await invModel.getInventoryByInventoryId(inv_id); // Re-using existing model function
+  const classificationSelect = await utilities.buildClassificationList(itemData[0].classification_id);
+  const itemName = `${itemData[0].inv_make} ${itemData[0].inv_model}`;
+  res.render("./inventory/edit-inventory", {
+    title: "Edit " + itemName,
+    nav,
+    classificationSelect: classificationSelect,
+    errors: null,
+    inv_id: itemData[0].inv_id,
+    inv_make: itemData[0].inv_make,
+    inv_model: itemData[0].inv_model,
+    inv_year: itemData[0].inv_year,
+    inv_description: itemData[0].inv_description,
+    inv_image: itemData[0].inv_image,
+    inv_thumbnail: itemData[0].inv_thumbnail,
+    inv_price: itemData[0].inv_price,
+    inv_miles: itemData[0].inv_miles,
+    inv_color: itemData[0].inv_color,
+    classification_id: itemData[0].classification_id
+  });
 };
 
 module.exports = invCont;
