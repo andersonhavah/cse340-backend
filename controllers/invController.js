@@ -223,6 +223,7 @@ invCont.editInventoryView = async function (req, res, next) {
   res.render("./inventory/edit-inventory", {
     title: "Edit " + itemName,
     nav,
+    description: "This is the edit vehicle page.",
     classificationSelect: classificationSelect,
     errors: null,
     inv_id: itemData[0].inv_id,
@@ -283,6 +284,7 @@ invCont.updateInventory = async function (req, res, next) {
     res.status(501).render("inventory/edit-inventory", {
       title: "Edit " + itemName,
       nav,
+      description: "This is the edit vehicle page.",
       classificationSelect: classificationSelect,
       errors: null,
       inv_id,
