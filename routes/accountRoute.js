@@ -23,9 +23,14 @@ router.post(
     "/login",
     regValidate.loginRules(),
     regValidate.validateLoginData,
-  (req, res) => {
-    res.status(200).send('login process')
-  }
+    utilities.handleErrors(accountController.accountLogin)
 )
+
+// Default Account Management View (for successful login redirect)
+router.get(
+  "/",
+  utilities.checkLogin,
+  utilities.handleErrors(accountController.buildManagement) // New function to build account view
+);
 
 module.exports = router;
