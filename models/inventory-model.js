@@ -147,7 +147,7 @@ async function updateInventory(
       inv_miles,
       inv_color,
       classification_id,
-      inv_id // inv_id is the last parameter for the WHERE clause
+      inv_id
     ]);
     return data.rows[0];
   } catch (error) {
