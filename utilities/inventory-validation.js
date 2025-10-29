@@ -123,7 +123,7 @@ validate.checkInventoryData = async (req, res, next) => {
  * ***************************** */
 validate.checkUpdateData = async (req, res, next) => {
     const {
-        inv_id, // Add inv_id
+        inv_id,
         inv_make,
         inv_model,
         inv_year,
@@ -146,7 +146,6 @@ validate.checkUpdateData = async (req, res, next) => {
             title: "Edit " + itemName,
             nav,
             classificationSelect,
-            inv_id, // Pass inv_id back
             inv_make,
             inv_model,
             inv_year,
