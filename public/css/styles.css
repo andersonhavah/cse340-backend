@@ -921,3 +921,11 @@ form p {
 #inventoryDisplay a:hover {
   text-decoration: underline;
 }
+
+.delete-button {
+  background-color: #dc3545;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
