@@ -1,27 +1,29 @@
 <%# The title for this view is "Add New Classification" %>
-    <h1>Add New Classification</h1>
+<h1>Add New Classification</h1>
 
-    <%# Display flash messages and validation errors %>
-        <%- messages() %>
-            <% if (errors) { %>
-                <ul class="notice">
-                    <% errors.array().forEach(error=> { %>
-                        <li>
-                            <%= error.msg %>
-                        </li>
-                        <% }) %>
-                </ul>
-                <% } %>
+<%# Display flash messages and validation errors %> <%- messages() %> <% if
+(errors) { %>
+<ul class="notice">
+  <% errors.array().forEach(error=> { %>
+  <li><%= error.msg %></li>
+  <% }) %>
+</ul>
+<% } %>
 
-                    <form id="addClassificationForm" action="/inv/add-classification" method="post">
-                        <fieldset>
-                            <legend>New Classification</legend>
-                            <div class="form-group">
-                                <label for="classificationName">Classification Name</label>
-                                <p>Name must be alphabetic characters only.</p>
-                                <input type="text" id="classificationName" name="classification_name" required
-                                    pattern="^[a-zA-Z]+$">
-                            </div>
-                            <button type="submit" class="form-button">Add Classification</button>
-                        </fieldset>
-                    </form>
+<form id="addClassificationForm" action="/inv/add-classification" method="post">
+  <fieldset>
+    <legend>New Classification</legend>
+    <div class="form-group">
+      <label for="classificationName">Classification Name</label>
+      <p>Name must be alphabetic characters only.</p>
+      <input
+        type="text"
+        id="classificationName"
+        name="classification_name"
+        required
+        pattern="^[a-zA-Z]+$"
+      />
+    </div>
+    <button type="submit" class="form-button">Add Classification</button>
+  </fieldset>
+</form>
