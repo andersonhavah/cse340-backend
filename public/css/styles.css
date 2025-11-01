@@ -185,7 +185,6 @@ hr {
 }
 
 /* index.ejs */
-/* index.ejs */
 #hero {
   background-image: url("/images/vehicles/delorean.jpg");
   background-repeat: no-repeat;
@@ -719,24 +718,25 @@ input:required:invalid:focus {
 #messages, .flash-message.notice {
   padding: 0;
   margin: 0;
-  list-style-type: none;
+  /* list-style-type: none; */
   border-radius: 0.5rem;
   overflow: hidden;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
 /* Base style for any message */
-#messages li, .flash-message.notice {
-  padding: 1rem 1.5rem;
+#messages li, .flash-message.notice li {
+  padding: 0.5rem 1.5rem;
   font-size: 0.95rem;
   font-weight: 500;
-  list-style-type: none;
+  list-style: inside;
 }
 
 /* Style for "notice" messages (Success) */
 #messages .notice {
   background-color: #FAFFFC;
   color: #166534;
+  border: 1px solid #22c55e;
   border-left: 5px solid #22c55e;
 }
 
@@ -744,10 +744,9 @@ input:required:invalid:focus {
 #messages .error, .flash-message.error, .flash-message.notice {
   background-color: #FEF1F1;
   color: #991b1b;
+  border: 1px solid #ef4444;
   border-left: 5px solid #ef4444;
 }
-
-/* --- END OF NEW STYLES --- */
 
 /* ===============================
   Management View Styling
@@ -778,21 +777,20 @@ input:required:invalid:focus {
 
 .management-links a:hover {
   background-color: #007bff;
-  /* Primary Blue */
   color: #fff;
 }
 
 /* ===============================
   General Form Styling
 ================================*/
-form {
+/* form {
   max-width: 600px;
   margin: 2rem auto;
   padding: 2rem;
   border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #f9f9f9;
-}
+} */
 
 fieldset {
   border: none;
@@ -833,7 +831,6 @@ form select {
   border-radius: 4px;
   font-size: 1rem;
   box-sizing: border-box;
-  /* Ensures padding doesn't affect width */
 }
 
 form textarea {
@@ -853,7 +850,6 @@ form p {
   width: 100%;
   padding: 0.8rem;
   background-color: #28a745;
-  /* Success Green */
   color: white;
   border: none;
   border-radius: 5px;
@@ -867,16 +863,15 @@ form p {
 }
 
 /* Style for validation error messages */
-.notice {
+/* .flash-message.notice {
   border: 1px solid #dc3545;
-  /* Danger Red */
   background-color: #f8d7da;
   color: #721c24;
   padding: 1rem;
   margin-bottom: 1.5rem;
   border-radius: 5px;
   list-style-position: inside;
-}
+} */
 
 /* ===============================
   Inventory Management Table
@@ -905,7 +900,6 @@ form p {
 
 #inventoryDisplay tbody tr:nth-child(even) {
   background-color: #f2f2f2;
-  /* Striped rows */
 }
 
 #inventoryDisplay tbody tr:hover {
