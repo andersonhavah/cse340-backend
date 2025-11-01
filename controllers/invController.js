@@ -323,4 +323,22 @@ invCont.buildDeleteView = async function (req, res, next) {
   });
 };
 
+/* ***************************
+ * Process the delete request
+ * ************************** */
+invCont.deleteInventory = async function (req, res, next) {
+  let nav = await utilities.getNav();
+  const inv_id = parseInt(req.body.inv_id);
+
+  const deleteResult = await invModel.deleteInventoryItem(inv_id);
+
+  if (deleteResult) {
+    req.flash("notice", `The vehicle was successfully deleted.`);
+    res.redirect("/inv/");
+  } else {
+    req.flash("notice", "Sorry, the deletion failed.");
+    res.redirect("/inv/delete/" + inv_id);
+  }
+};
+
 module.exports = invCont;
